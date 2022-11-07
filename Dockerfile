@@ -6,6 +6,9 @@ FROM kalilinux/kali-rolling
 
 ARG PASSWORD
 
+ARG PKG
+ENV PKG kali-tools-web
+
 ENV DEBIAN_FRONTEND noninteractive
 ENV SSH_PORT 22
 
@@ -41,7 +44,7 @@ RUN chmod 755 /startkali.sh
 # Install the Kali Packages
 # #####################################################
 
-RUN apt -y install --no-install-recommends kali-linux-default
+RUN apt -y install --no-install-recommends $PKG
 
 # #####################################################
 # Set language
