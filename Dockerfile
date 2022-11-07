@@ -44,7 +44,7 @@ RUN chmod 755 /startkali.sh
 # Install the Kali Packages
 # #####################################################
 
-RUN apt -y install --no-install-recommends $PKG
+RUN apt -y install --no-install-recommends kali-linux-default $PKG
 
 # #####################################################
 # Set language
@@ -67,7 +67,7 @@ RUN echo "kali:$PASSWORD" | chpasswd
 # Change the ssh port in /etc/ssh/sshd_config
 # #####################################################
 
-RUN echo "Port $SSH_PORT" >>/etc/ssh/sshd_config
+RUN echo "Port $SSH_PORT" >> /etc/ssh/sshd_config
 
 # #############################
 # Install and configure x2go
@@ -93,7 +93,7 @@ RUN echo "/bin/bash" >> /startkali.sh
 # Expose the right ports and set the entrypoint
 # ###########################################################
 
-EXPOSE ${SSH_PORT}
+EXPOSE $SSH_PORT
 WORKDIR "/root"
 ENTRYPOINT ["/bin/bash"]
 CMD ["/startkali.sh"]
