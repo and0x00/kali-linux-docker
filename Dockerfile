@@ -4,7 +4,7 @@
 
 FROM kalilinux/kali-rolling
 
-ENV PASSWORD=change_this_value
+ARG PASSWORD
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV SSH_PORT 22
