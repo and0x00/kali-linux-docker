@@ -42,10 +42,10 @@ RUN echo "Port $SSH_PORT" >> /etc/ssh/sshd_config
 # Install and config VNC
 
 RUN apt -y install --no-install-recommends tigervnc-standalone-server tigervnc-tools; \
-    echo "/usr/libexec/tigervncsession-start :${VNC_DISPLAY} " >> /start.sh; \
+    echo "/usr/libexec/tigervncsession-start :1 " >> /start.sh; \
     echo "echo -e '$PASSWORD' | vncpasswd -f >/home/kali/.vnc/passwd" >> /start.sh; \
     echo "while true; do sudo -u kali vncserver -fg -v ; done" >> /start.sh; \
-    echo ":${VNC_DISPLAY}=kali" >>/etc/tigervnc/vncserver.users; \
+    echo ":1=kali" >>/etc/tigervnc/vncserver.users; \
     echo '$localhost = "no";' >>/etc/tigervnc/vncserver-config-mandatory; \
     echo '$SecurityTypes = "VncAuth";' >>/etc/tigervnc/vncserver-config-mandatory; \
     mkdir -p /home/kali/.vnc; \
