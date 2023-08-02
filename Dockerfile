@@ -22,11 +22,7 @@ RUN apt -y install --no-install-recommends \
 
 # Copy data to container
 
-COPY data /data/
-
-# Change i3 config
-
-RUN cp /data/configs/i3-config /etc/i3/config
+COPY data/configs/i3-config /etc/i3/config
 
 # Create the start bash shell file
 
@@ -60,8 +56,7 @@ RUN apt -y install --no-install-recommends tigervnc-standalone-server tigervnc-t
 
 # Add custom wallpaper
 
-RUN mkdir /home/kali/.wallpapers/
-COPY data/images/wallpaper.jpg /home/kali/.wallpapers/wallpaper.jpg
+# COPY data/images/wallpaper.jpg /usr/share/images/desktop-base/
 
 # Expose the right ports and set the entrypoint
 
