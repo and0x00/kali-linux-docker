@@ -22,7 +22,7 @@ RUN apt -y install --no-install-recommends \
 
 # Copy data to container
 
-COPY data/configs/i3-config /etc/i3/config
+COPY configs/i3-config /etc/i3/config
 
 # Create the start bash shell file
 
